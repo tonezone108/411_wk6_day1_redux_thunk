@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { Button } from "@material-ui/core";
+import {
+  Button,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Container
+} from "@material-ui/core";
 class Import extends Component {
   // fill out this component
   state = {
@@ -19,13 +27,38 @@ class Import extends Component {
 
   render() {
     return (
-      <div>
-        <p>Import Component</p>
-        <Button onClick={this.fetchCars}>Click Me</Button>
-        {this.props.makes.map(make => {
+      <Container>
+        <h2 style={{ color: "blue" }}>COUNT: {this.props.makes.length}</h2>
+        <Button onClick={this.fetchCars} variant="contained" color="primary">
+          Import
+        </Button>
+        {/* {this.props.makes.map(make => {
           return <p>{make.MakeName}</p>;
-        })}
-      </div>
+        })} */}
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell align="right">Id</TableCell>
+              <TableCell align="right">Make/Model</TableCell>
+              <TableCell align="right">Actions</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {" "}
+            {this.props.makes.map((make, index) => {
+              return (
+                <TableRow key={make.MakeId}>
+                  <TableCell align="right">{make.MakeId}</TableCell>
+                  <TableCell align="right">{make.MakeName}</TableCell>
+                  <TableCell align="right">Actions</TableCell>
+                </TableRow>
+              );
+            })}
+            <TableRow></TableRow>
+          </TableBody>
+        </Table>
+      </Container>
     );
   }
 }
