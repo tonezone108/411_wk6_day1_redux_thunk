@@ -28,7 +28,7 @@ class Import extends Component {
   render() {
     return (
       <Container>
-        <h2 style={{ color: "blue" }}>COUNT: {this.props.makes.length}</h2>
+        <h2>COUNT: {this.props.makes.length}</h2>
         <Button onClick={this.fetchCars} variant="contained" color="primary">
           Import
         </Button>
